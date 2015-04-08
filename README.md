@@ -6,5 +6,5 @@ Rainlog.org is a cooperative rainfall monitoring network for Arizona developed a
 
 A full description of rainlog.org can be found at http://rainlog.org/usprn/html/main/about.jsp and http://rainlog.org/usprn/html/main/faq.jsp
 
-Rainlog's focus is on Arizona but there are people sending data from Washinton state to Tennesse.
+Rainlog's focus is on Arizona but there are people sending data from states as far away as Washington and Tennesse.
 
