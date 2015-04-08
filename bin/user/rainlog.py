@@ -31,10 +31,7 @@ from weewx.restx import SendError
 import time
 
 def logmsg(dst, msg):
-#    syslog.syslog(dst, 'rainlog: %s' % msg)
-    with open("/home/dave/rainlog.log", "a") as myfile:
-        myfile.write("%s\n" % msg)
-    myfile.close()
+    syslog.syslog(dst, 'rainlog: %s' % msg)
 
 def logdbg(msg):
     logmsg(syslog.LOG_DEBUG, msg)
@@ -96,14 +93,12 @@ class StdRainlog(StdRESTful):
 
 class RainlogThread(RESTThread):
 
-    _SERVER_URL = 'http://rainlog.org'
-
     def __init__(self, queue, username, password,
                  manager_dict,
                  WEEWX_ROOT,
                  lastpath='archive/rainlog.last',
                  protocol_name='Rainlog',
-                 server_url=_SERVER_URL, skip_upload=False,
+                 skip_upload=False,
                  post_interval=None, max_backlog=1, stale=None,
                  log_success=True, log_failure=True, 
                  timeout=60, max_tries=3, retry_wait=5):
@@ -196,11 +191,6 @@ class RainlogThread(RESTThread):
             return
 
 
-        the_page = response.read()
-        with open("/home/dave/getsesid.html","w") as fil:
-            fil.write(the_page)
-        fil.close()
-
 ############
 # Login
 ############
@@ -219,9 +209,6 @@ class RainlogThread(RESTThread):
             return
 
         login_page = logresp.read()
-        with open("/home/dave/login.html","w") as fil:
-            fil.write(login_page)
-        fil.close()
 
 #check for "Invalid login attempt. Please try again."
         try:
@@ -281,9 +268,6 @@ class RainlogThread(RESTThread):
             return
 
         submit_page = submitresp.read()
-        with open("/home/dave/submit.html","w") as fil:
-            fil.write(submit_page)
-        fil.close()
 
         with open(self.lastfile,"w") as lastfile:
             lastfile.write( str(endupdate) )
