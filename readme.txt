@@ -1,6 +1,7 @@
 rainlog - weewx extension that uploads rain data to rainlog.org
 
-rainlog reports once a day at the recomended time of 07:00 localtime
+rainlog reports the total daily rain once per day at the recomended
+time of 07:00 localtime
 
 INSTALLATION
 1) run the installer:
