@@ -348,5 +348,5 @@ class RainlogThread(RESTThread):
             if opener is None:
                 _response = urllib2.urlopen(url, data)
             else:
-                _response = opener.open(url, data, self.timeout)
+                _response = opener.open(url, data)
         return _response
